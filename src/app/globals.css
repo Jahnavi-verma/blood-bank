@@ -1,0 +1,45 @@
+/* styles/globals.css or your main CSS file */
+body {
+  background-color: black;
+}
+
+p {
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+  line-height: 1.5;
+  max-width: 768px;
+  margin: 0 auto;
+  font-family: 'Inter', sans-serif;
+}
+.container {
+  position: relative; /* Establishes a positioning context */
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+}
+
+.background-div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ff761a00;
+  z-index: 1; /* Lower z-index to stay behind */
+}
+
+.overlay-div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0); /* Semi-transparent overlay */
+  color: rgb(255, 255, 255);
+  z-index: 2; /* Higher z-index to appear on top */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
