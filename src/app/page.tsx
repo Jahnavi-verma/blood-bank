@@ -8,13 +8,13 @@ export default function HomePage() {
       <div className="background-div" style={{ width: '100%', height: '600px'}}>
         <Beams
           beamWidth={2}
-          beamHeight={15}
+          beamHeight={30}
           beamNumber={12}
           lightColor="#fa181cff"
           speed={2}
           noiseIntensity={1.75}
           scale={0.2}
-          rotation={0}
+          rotation={30}
         />
       </div>
       <p className="overlay-div">
