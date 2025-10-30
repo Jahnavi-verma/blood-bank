@@ -88,7 +88,7 @@ const LoginForm: React.FC = () => {
             />
           </svg>
           <div className="form">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">User Type</label>
             <input type="email" id="email" />
             <label htmlFor="password">Password</label>
             <input type="password" id="password" />
