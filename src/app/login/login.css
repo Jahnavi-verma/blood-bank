@@ -90,7 +90,7 @@ svg {
 }
 path {
   fill: none;
-  stroke: url(#linearGradient);;
+  stroke: url(#linearGradient);
   stroke-width: 4;
   stroke-dasharray: 240 1386;
 }
@@ -99,7 +99,7 @@ path {
   position: absolute;
 }
 label {
-  color:  #c2c2c5;
+  color: #c2c2c5;
   display: block;
   font-size: 14px;
   height: 16px;

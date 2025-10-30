@@ -4,6 +4,7 @@ import Beams from './beams';
 import './globals.css';
 import Dock from './dock';
 import LoginButton from "./loginbutton";
+import Link from 'next/link';
 
 export default function HomePage() {
   return (
@@ -28,7 +29,10 @@ export default function HomePage() {
       </p>
       </div>
       <div>
-        <LoginButton onClick={() => alert("Login clicked")} />
+        <Link href="/login">
+          <button className="your-button-class">Login</button>
+        </Link>
+
       </div>
       </body>
       </html>
