@@ -1,65 +1,22 @@
+body {
+ background-color: #000000; /* black */
+}
 .dashboard {
   font-family: Arial, sans-serif;
-  background-color: #1B1810;
-  color: #FFFFFF; /* Added white */
+  background-color: #000000; /* Black */
+  color: #FFFFFF; /* White */
   padding: 20px;
   min-height: 100vh;
   position: relative;
   overflow: hidden;
 }
 
-/* Orb Background */
-.orb-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
-.orb {
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(102, 0, 1, 0.3), transparent);
-  animation: float 6s ease-in-out infinite;
-}
-
-.orb1 {
-  width: 200px;
-  height: 200px;
-  top: 10%;
-  left: 10%;
-  animation-delay: 0s;
-}
-
-.orb2 {
-  width: 150px;
-  height: 150px;
-  top: 50%;
-  right: 10%;
-  animation-delay: 2s;
-}
-
-.orb3 {
-  width: 100px;
-  height: 100px;
-  bottom: 20%;
-  left: 50%;
-  animation-delay: 4s;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
-
 /* Side Dock */
 .side-dock {
   position: fixed;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
+  left: 20px; /* Top left */
+  top: 20px; /* Top left */
+  transform: none;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -67,8 +24,8 @@
 }
 
 .dock-item {
-  background-color: #3D0C01;
-  color: #FFFFFF;
+  background-color: #f00f0f; /* Red */
+  color: #FFFFFF; /* White */
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -81,13 +38,20 @@
 
 .dock-item:hover {
   transform: scale(1.1);
-  background-color: #660001;
+  background-color: #0f0ff0; /* Blue */
 }
 
-.dashboard h1 {
+.dashboard h1{
   text-align: center;
-  color: #00563E;
+  color: #0ff080; /* Dark green */
   margin-bottom: 20px;
+}
+
+.dashboard .blur-text {
+  text-align: center;
+  color: #0ff080; /* Dark green */
+  margin-bottom: 20px;
+  
 }
 
 .content {
@@ -100,17 +64,17 @@
 .charts {
   flex: 2;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Further adjusted for larger charts */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
 
 /* Spotlight Card Effect */
 .spotlight-card {
-  background-color: #3D0C01;
-  padding: 20px; /* Further increased padding */
+  background-color: transparent; /* Transparent holder */
+  padding: 20px;
   border-radius: 8px;
   text-align: center;
-  color: #FFFFFF;
+  color: #FFFFFF; /* White */
   position: relative;
   overflow: hidden;
   transition: box-shadow 0.3s;
@@ -134,30 +98,52 @@
 }
 
 .spotlight-card:hover {
-  box-shadow: 0 0 20px rgba(102, 0, 1, 0.5);
+  box-shadow: 0 0 20px rgba(15, 15, 240, 0.5); /* Blue glow */
 }
 
 .spotlight-card h3 {
   margin: 0 0 10px 0;
-  color: #660001;
+  color: #660001; /* Dark red */
 }
 
-/* 3D Pie Chart Effect */
-.pie-chart-3d {
+/* 3D Chart Effect */
+.chart-3d-wrapper {
   position: relative;
   transform-style: preserve-3d;
-  perspective: 1000px;
-}
-
-.pie-chart-3d > div {
-  transform: rotateX(15deg) rotateY(-15deg);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
+  perspective: 1200px; /* Enhanced perspective for better 3D depth */
+  transform: rotateX(20deg) rotateY(-20deg); /* Stronger angle for height simulation */
+  border-radius: 50%; /* Ensures circular shape */
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.8), /* Bottom shadow for height */
+    0 0 20px rgba(240, 15, 15, 0.3), /* Glow for 3D effect */
+    inset 0 0 10px rgba(255, 255, 255, 0.1); /* Inner highlight for depth */
   transition: transform 0.3s;
 }
 
-.pie-chart-3d:hover > div {
-  transform: rotateX(0deg) rotateY(0deg);
+.chart-3d-wrapper:hover {
+  transform: rotateX(10deg) rotateY(-10deg); /* Slight flatten on hover for interaction */
+}
+
+/* Amount Tooltip */
+.amount-tooltip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+  color: #FFFFFF; /* White */
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid #0f0ff0; /* Blue border */
+  font-size: 12px;
+  opacity: 0; /* Hidden by default */
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 5;
+}
+
+.spotlight-card:hover .amount-tooltip {
+  opacity: 1; /* Show on hover over the card (which includes the chart) */
 }
 
 /* Form Modal */
@@ -167,7 +153,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8); /* Added black overlay */
+  background-color: rgba(0, 0, 0, 0.8); /* Black overlay */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -175,15 +161,16 @@
 }
 
 .form-section {
-  background-color: #3D0C01;
+  background-color: #000000; /* Black */
   padding: 20px;
   border-radius: 8px;
-  color: #FFFFFF;
+  color: #FFFFFF; /* White */
   width: 300px;
+  border: 2px solid #0f0ff0; /* Blue border */
 }
 
 .form-section h2 {
-  color: #660001;
+  color: #660001; /* Dark red */
   margin-bottom: 20px;
 }
 
@@ -196,22 +183,22 @@
 label {
   display: block;
   margin-bottom: 10px;
-  color: #FFFFFF;
+  color: #FFFFFF; /* White */
 }
 
 input, select {
   width: 100%;
   padding: 8px;
   margin-top: 5px;
-  border: 1px solid #00563E;
+  border: 1px solid #0f0ff0; /* Blue border */
   border-radius: 4px;
-  background-color: #1B1810;
-  color: #FFFFFF;
+  background-color: #000000; /* Black */
+  color: #FFFFFF; /* White */
 }
 
 button {
-  background-color: #660001;
-  color: #FFFFFF;
+  background-color: #f00f0f; /* Red */
+  color: #FFFFFF; /* White */
   border: none;
   padding: 10px;
   width: 100%;
@@ -221,7 +208,7 @@ button {
 }
 
 button:hover {
-  background-color: #00563E;
+  background-color: #0ff080; /* Cyan-green */
 }
 
 @media (max-width: 768px) {
@@ -229,13 +216,13 @@ button:hover {
     flex-direction: column;
   }
   .charts {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted for mobile */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
   .side-dock {
     bottom: 20px;
     top: auto;
-    right: 50%;
-    transform: translateX(50%);
+    left: 20px; /* Adjusted for mobile, keeping top-left */
+    transform: none;
     flex-direction: row;
   }
 }

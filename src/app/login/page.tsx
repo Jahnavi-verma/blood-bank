@@ -66,7 +66,7 @@ const LoginForm: React.FC = () => {
                 y2="193.49992"
                 gradientUnits="userSpaceOnUse">
                 <stop
-                  style={{ stopColor: '#ff00ff' }}
+                  style={{ stopColor: '#0f0ff0' }}
                   offset="0"
                   id="stop876" />
                 <stop

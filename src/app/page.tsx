@@ -8,8 +8,10 @@ import Link from 'next/link';
 
 export default function HomePage() {
   return (
-    <main>
-      <div className="page-root">
+    <body>
+    <main className="bg-[#e6eaf0] min-h-screen">
+      
+      <div className="page-root" >
         <div className="container">
           <div className="background-div" style={{ width: '100%', height: '600px' }}>
             <Beams
@@ -36,6 +38,8 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+      
     </main>
+    </body>
   );
 }

@@ -1,7 +1,8 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { PieChart, Pie, Cell } from 'recharts'; // For pie charts
 import './Dashboard.css'; // Import the CSS file
+import BlurText from "./BlurText";
 
 const Dashboard: React.FC = () => {
   const [requestType, setRequestType] = useState<'emergency' | 'surgery'>('emergency');
@@ -25,8 +26,6 @@ const Dashboard: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission (e.g., send to API)
-    console.log({ requestType, bloodType, amount, nurseId });
-    alert('Blood request submitted!');
     setIsFormOpen(false); // Close form after submit
   };
 
@@ -38,24 +37,29 @@ const Dashboard: React.FC = () => {
     e.currentTarget.style.setProperty('--x', `${x}%`);
     e.currentTarget.style.setProperty('--y', `${y}%`);
   };
+  const handleAnimationComplete = () => {
+  console.log('Animation completed!');
+};
+
 
   return (
     <div className="dashboard">
-      {/* Orb Background */}
-      <div className="orb-background">
-        <div className="orb orb1"></div>
-        <div className="orb orb2"></div>
-        <div className="orb orb3"></div>
-      </div>
-
       {/* Side Navigation Dock */}
       <div className="side-dock">
         <div className="dock-item" onClick={() => setIsFormOpen(!isFormOpen)}>
           <span>📋</span> {/* Icon for Request */}
         </div>
       </div>
-
-      <h1>Welcome Nurse!</h1>
+      <h1>
+      <BlurText
+        className="blur-text"
+        text="Welcome to the Nurse Dashboard!"
+        delay={150}
+        animateBy="letters"
+        direction="top"
+        onAnimationComplete={handleAnimationComplete}
+      />
+      </h1>
       <div className="content">
         <div className="charts">
           {bloodData.map((data, index) => (
@@ -65,7 +69,7 @@ const Dashboard: React.FC = () => {
               onMouseMove={handleMouseMove}
             >
               <h3>{data.type}</h3>
-              <div className="pie-chart-3d">
+              <div className="chart-3d-wrapper">
                 <PieChart width={100} height={100}>
                   <Pie
                     data={[
@@ -79,12 +83,12 @@ const Dashboard: React.FC = () => {
                     fill="#8884d8"
                     dataKey="value"
                   >
-                    <Cell fill="#660001" /> {/* Available */}
-                    <Cell fill="#1B1810" /> {/* Unavailable */}
+                    <Cell fill="#f00f0f" /> {/* Available */}
+                    <Cell fill="#00563e" /> {/* Unavailable */}
                   </Pie>
                 </PieChart>
               </div>
-              <p>{data.available} units</p>
+              <div className="amount-tooltip">{data.available} units</div>
             </div>
           ))}
         </div>
