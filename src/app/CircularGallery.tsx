@@ -483,7 +483,7 @@ class App {
         text: ''
       },
       {
-        image: `https://picsum.photos/seed/2/800/600?grayscale`,
+        image: `/blood.png.png`,
         text: ''
       },
       {
@@ -491,7 +491,7 @@ class App {
         text: ''
       },
       {
-        image: ``,
+        image: `/IMG-20251125-WA0043.jpg`,
         text: ''
       },
       {
@@ -499,7 +499,7 @@ class App {
         text: ''
       },
       {
-        image: `https://picsum.photos/seed/16/800/600?grayscale`,
+        image: `/IMG-20251126-WA0000.jpg`,
         text: ''
       },
     ];
